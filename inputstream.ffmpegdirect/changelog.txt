@@ -1,3 +1,7 @@
+v20.5.1
+- Translations updates from Weblate
+	- cs_cz, da_dk, es_es, fi_fi, fr_fr, hr_hr, it_it, ro_md, ru_ru, scn
+
 v20.5.0
 - Kodi inputstream API update to version 3.2.0
 
