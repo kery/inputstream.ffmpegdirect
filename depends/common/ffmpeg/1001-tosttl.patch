@@ -1,0 +1,59 @@
+diff --git a/libavformat/network.c b/libavformat/network.c
+index f752efc411..350444ea78 100644
+--- a/libavformat/network.c
++++ b/libavformat/network.c
+@@ -180,6 +180,19 @@ static int ff_poll_interrupt(struct pollfd *p, nfds_t nfds, int timeout,
+     return ret;
+ }
+ 
++static int g_tos = 0;
++static int g_ttl = 0;
++
++void libavformat_set_tos(int tos)
++{
++    g_tos = tos;
++}
++
++void libavformat_set_ttl(int ttl)
++{
++    g_ttl = ttl;
++}
++
+ int ff_socket(int af, int type, int proto, void *logctx)
+ {
+     int fd;
+@@ -204,6 +217,14 @@ int ff_socket(int af, int type, int proto, void *logctx)
+         }
+     }
+ #endif
++    if (fd != -1) {
++        if (g_tos && setsockopt (fd, IPPROTO_IP, IP_TOS, &g_tos, sizeof(g_tos))) {
++            av_log(logctx, AV_LOG_WARNING, "setsockopt(IP_TOS) failed\n");
++        }
++        if (g_ttl && setsockopt (fd, IPPROTO_IP, IP_TTL, &g_ttl, sizeof(g_ttl))) {
++            av_log(logctx, AV_LOG_WARNING, "setsockopt(IP_TTL) failed\n");
++        }
++    }
+     return fd;
+ }
+ 
+diff --git a/libavformat/udp.c b/libavformat/udp.c
+index 909213a467..503f77778d 100644
+--- a/libavformat/udp.c
++++ b/libavformat/udp.c
+@@ -828,13 +828,13 @@ static int udp_open(URLContext *h, const char *uri, int flags)
+             av_log(h, AV_LOG_WARNING, "socket option UDPLITE_RECV_CSCOV not available");
+     }
+ 
+-    if (dscp >= 0) {
++    /*if (dscp >= 0) {
+         dscp <<= 2;
+         if (setsockopt (udp_fd, IPPROTO_IP, IP_TOS, &dscp, sizeof(dscp)) != 0) {
+             ret = ff_neterrno();
+             goto fail;
+         }
+-    }
++    }*/
+ 
+     /* If multicast, try binding the multicast address first, to avoid
+      * receiving UDP packets from other sources aimed at the same UDP
