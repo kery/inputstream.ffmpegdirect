@@ -37,6 +37,20 @@ index f752efc411..350444ea78 100644
      return fd;
  }
  
+diff --git a/libavformat/network.h b/libavformat/network.h
+index ca214087fc..26323930fd 100644
+--- a/libavformat/network.h
++++ b/libavformat/network.h
+@@ -306,6 +306,9 @@ int ff_listen_connect(int fd, const struct sockaddr *addr,
+ 
+ int ff_http_match_no_proxy(const char *no_proxy, const char *hostname);
+ 
++void libavformat_set_tos(int tos);
++void libavformat_set_ttl(int ttl);
++
+ int ff_socket(int domain, int type, int protocol, void *logctx);
+ 
+ void ff_log_net_error(void *ctx, int level, const char* prefix);
 diff --git a/libavformat/udp.c b/libavformat/udp.c
 index 909213a467..503f77778d 100644
 --- a/libavformat/udp.c
