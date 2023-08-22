@@ -1,5 +1,5 @@
 diff --git a/libavformat/network.c b/libavformat/network.c
-index f752efc411..350444ea78 100644
+index f752efc411..13ce3d2748 100644
 --- a/libavformat/network.c
 +++ b/libavformat/network.c
 @@ -180,6 +180,19 @@ static int ff_poll_interrupt(struct pollfd *p, nfds_t nfds, int timeout,
@@ -26,7 +26,7 @@ index f752efc411..350444ea78 100644
          }
      }
  #endif
-+    if (fd != -1) {
++    if (fd != -1 && af == AF_INET) {
 +        if (g_tos && setsockopt (fd, IPPROTO_IP, IP_TOS, &g_tos, sizeof(g_tos))) {
 +            av_log(logctx, AV_LOG_WARNING, "setsockopt(IP_TOS) failed\n");
 +        }

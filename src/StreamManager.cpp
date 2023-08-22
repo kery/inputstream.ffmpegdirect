@@ -212,8 +212,15 @@ bool InputStreamFFmpegDirect::Open(const kodi::addon::InputstreamProperty& props
     httpProxy.SetProxyPassword(kodi::addon::GetSettingString("httpProxyPassword"));
   }
 
-  libavformat_set_tos(16);
-  libavformat_set_ttl(65);
+  int tos = kodi::addon::GetSettingInt("ipv4Tos", -1);
+  if (tos >= 0) {
+    libavformat_set_tos(tos);
+  }
+
+  int ttl = kodi::addon::GetSettingInt("ipv4Ttl", -1);
+  if (ttl >= 0) {
+    libavformat_set_ttl(ttl);
+  }
 
   if (m_properties.m_streamMode == StreamMode::CATCHUP)
     m_stream = std::make_shared<FFmpegCatchupStream>(static_cast<IManageDemuxPacket*>(this), m_properties, httpProxy);
