@@ -64,6 +64,21 @@ msgctxt "#30008"
 msgid "Stream selection bandwidth"
 msgstr ""
 
+#. label-group: Network - IPv4Options
+msgctxt "#60001"
+msgid "FFmpeg IPv4 Options"
+msgstr ""
+
+#. label-option: Network - ipv4Tos
+msgctxt "#60002"
+msgid "TOS"
+msgstr ""
+
+#. label-option: Network - ipv4Ttl
+msgctxt "#60003"
+msgid "TTL"
+msgstr ""
+
 # empty strings from id 30009 to 30019
 #. label-category: timeshift
 #. label-group: Timeshift - Timeshift
@@ -166,6 +181,16 @@ msgstr ""
 #. help: Network - streamBandwidth
 msgctxt "#30606"
 msgid "Use this value as a maximum when selecting which HLS stream to use."
+msgstr ""
+
+#. help: Network - ipv4Tos
+msgctxt "#61002"
+msgid "Set the TOS value used by FFmpeg, \"0\" means use default value."
+msgstr ""
+
+#. help: Network - ipv4Ttl
+msgctxt "#61003"
+msgid "Set the TTL value used by FFmpeg, \"0\" means use default value."
 msgstr ""
 
 # empty strings from id 30607 to 30619

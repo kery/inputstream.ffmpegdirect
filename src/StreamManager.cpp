@@ -212,13 +212,13 @@ bool InputStreamFFmpegDirect::Open(const kodi::addon::InputstreamProperty& props
     httpProxy.SetProxyPassword(kodi::addon::GetSettingString("httpProxyPassword"));
   }
 
-  int tos = kodi::addon::GetSettingInt("ipv4Tos", -1);
-  if (tos >= 0) {
+  int tos = kodi::addon::GetSettingInt("ipv4Tos", 0);
+  if (tos > 0) {
     libavformat_set_tos(tos);
   }
 
-  int ttl = kodi::addon::GetSettingInt("ipv4Ttl", -1);
-  if (ttl >= 0) {
+  int ttl = kodi::addon::GetSettingInt("ipv4Ttl", 0);
+  if (ttl > 0) {
     libavformat_set_ttl(ttl);
   }
 

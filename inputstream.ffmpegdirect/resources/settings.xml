@@ -110,22 +110,22 @@
           </control>
         </setting>
       </group>
-      <group id="3" label="30009">
-        <setting id="ipv4Tos" type="integer" label="30010">
+      <group id="3" label="60001">
+        <setting id="ipv4Tos" type="integer" label="60002" help="61002">
           <level>1</level>
-          <default>-1</default>
+          <default>0</default>
           <constraints>
-            <minimum>-1</minimum>
+            <minimum>0</minimum>
             <step>1</step>
             <maximum>255</maximum>
           </constraints>
           <control type="edit" format="integer" />
         </setting>
-        <setting id="ipv4Ttl" type="integer" label="30011">
+        <setting id="ipv4Ttl" type="integer" label="60003" help="61003">
           <level>1</level>
-          <default>-1</default>
+          <default>0</default>
           <constraints>
-            <minimum>-1</minimum>
+            <minimum>0</minimum>
             <step>1</step>
             <maximum>255</maximum>
           </constraints>

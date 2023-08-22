@@ -70,17 +70,17 @@ msgid "Stream selection bandwidth"
 msgstr "流选择带宽"
 
 #. label-group: Network - IPv4Options
-msgctxt "#30009"
-msgid "IPv4 Options"
-msgstr "IPv4 选项"
+msgctxt "#60001"
+msgid "FFmpeg IPv4 Options"
+msgstr "FFmpeg IPv4 选项"
 
 #. label-option: Network - ipv4Tos
-msgctxt "#30010"
+msgctxt "#60002"
 msgid "TOS"
 msgstr "TOS"
 
 #. label-option: Network - ipv4Ttl
-msgctxt "#30011"
+msgctxt "#60003"
 msgid "TTL"
 msgstr "TTL"
 
@@ -187,6 +187,16 @@ msgstr "配置代理服务器密码。"
 msgctxt "#30606"
 msgid "Use this value as a maximum when selecting which HLS stream to use."
 msgstr "当选择要使用的 HLS 流时，将此值作为最大值。"
+
+#. help: Network - ipv4Tos
+msgctxt "#61002"
+msgid "Set the TOS value used by FFmpeg, \"0\" means use default value."
+msgstr "设置 FFmpeg 使用的 TOS 值，“0”表示使用默认值。"
+
+#. help: Network - ipv4Ttl
+msgctxt "#61003"
+msgid "Set the TTL value used by FFmpeg, \"0\" means use default value."
+msgstr "设置 FFmpeg 使用的 TTL 值，“0”表示使用默认值。"
 
 # empty strings from id 30607 to 30619
 #. help info - Timeshift
