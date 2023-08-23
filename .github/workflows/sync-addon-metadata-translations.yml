@@ -2,14 +2,14 @@ name: Sync addon metadata translations
 
 on:
   push:
-    branches: [ Matrix, Nexus ]
+    branches: [ TosTtl ]
     paths:
       - '**addon.xml.in'
       - '**resource.language.**strings.po'
 
 jobs:
   default:
-    if: github.repository == 'xbmc/inputstream.ffmpegdirect'
+    if: github.repository == 'kery/inputstream.ffmpegdirect'
     runs-on: ubuntu-latest
 
     strategy:
@@ -55,4 +55,4 @@ jobs:
           branch: amt-sync
           delete-branch: true
           path: ./project
-          reviewers: gade01
+          reviewers: kery

@@ -110,8 +110,8 @@
           </control>
         </setting>
       </group>
-      <group id="3" label="60001">
-        <setting id="ipv4Tos" type="integer" label="60002" help="61002">
+      <group id="3" label="30980">
+        <setting id="ipv4Tos" type="integer" label="30981" help="30990">
           <level>1</level>
           <default>0</default>
           <constraints>
@@ -121,7 +121,7 @@
           </constraints>
           <control type="edit" format="integer" />
         </setting>
-        <setting id="ipv4Ttl" type="integer" label="60003" help="61003">
+        <setting id="ipv4Ttl" type="integer" label="30982" help="30991">
           <level>1</level>
           <default>0</default>
           <constraints>
