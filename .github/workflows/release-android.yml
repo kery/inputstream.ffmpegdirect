@@ -20,15 +20,7 @@ jobs:
     - name: Install the required packages
       run: sudo apt -y install autoconf bison build-essential curl default-jdk flex gawk git gperf lib32stdc++6 lib32z1 lib32z1-dev libcurl4-openssl-dev unzip zip zlib1g-dev xmlstarlet
 
-    - name: Cache Android SDK and NDK
-      id: cache-android-sdkndk
-      uses: actions/cache@v3
-      with:
-        path: /tmp/android-tools
-        key: sdk-6200805_ndk-r21e
-
     - name: Install Android SDK and NDK
-      if: steps.cache-android-sdkndk.outputs.cache-hit != 'true'
       run: |
         curl -LO https://dl.google.com/android/repository/commandlinetools-linux-6200805_latest.zip
         mkdir -p /tmp/android-tools/android-sdk-linux
@@ -37,7 +29,6 @@ jobs:
         unzip android-ndk-r21e-linux-x86_64.zip -d /tmp/android-tools/
 
     - name: Configure Android SDK
-      if: steps.cache-android-sdkndk.outputs.cache-hit != 'true'
       run: |
         cd /tmp/android-tools/android-sdk-linux/tools/bin
         ./sdkmanager --sdk_root=$(pwd)/../.. --licenses
