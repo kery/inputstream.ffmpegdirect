@@ -3,7 +3,7 @@ name: Release for Android
 on:
   push:
     tags:
-      - v[0-9]+.[0-9]+.[0-9]+
+      - v[0-9]+.[0-9]+.[0-9]+-[0-9]+
 
 jobs:
   build:
@@ -13,9 +13,9 @@ jobs:
       matrix:
         include:
           - host: aarch64-linux-android
-            arch: aarch64
+            platform: android-aarch64
           - host: arm-linux-androideabi
-            arch: arm
+            platform: android-armv7
     steps:
     - name: Install the required packages
       run: sudo apt -y install autoconf bison build-essential curl default-jdk flex gawk git gperf lib32stdc++6 lib32z1 lib32z1-dev libcurl4-openssl-dev unzip zip zlib1g-dev
@@ -70,10 +70,11 @@ jobs:
         cd /tmp/xbmc-depends
         cd $(ls -d ${{ matrix.host }}*)/share/kodi/addons/
         cp ../../../lib/kodi/addons/inputstream.ffmpegdirect/libinputstream.ffmpegdirect.so inputstream.ffmpegdirect/
+        sed -i "s/version=\".*\"/version=\"$(echo ${{ github.ref_name }} | cut -c 2-)\"/" inputstream.ffmpegdirect/addon.xml
         zip -r /tmp/inputstream.ffmpegdirect.zip inputstream.ffmpegdirect/
 
     - name: Upload to release
       uses: svenstaro/upload-release-action@v2
       with:
         file: /tmp/inputstream.ffmpegdirect.zip
-        asset_name: inputstream.ffmpegdirect-$tag-${{ matrix.arch }}.zip
+        asset_name: inputstream.ffmpegdirect-$tag-${{ matrix.platform }}.zip
