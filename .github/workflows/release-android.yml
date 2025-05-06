@@ -45,6 +45,8 @@ jobs:
     - name: Get Kodi source code
       run: |
         git clone https://github.com/xbmc/xbmc /tmp/kodi
+        cd /tmp/kodi
+        git checkout 21.2-Omega
         echo "binary-addons https://github.com/kery/kodi-repo-binary-addons.git TosTtl" > /tmp/kodi/cmake/addons/bootstrap/repositories/binary-addons.txt
 
     - name: Build tools and dependencies
